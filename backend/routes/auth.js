@@ -120,4 +120,9 @@ router.post('/change-password', authenticate, [
   }
 });
 
+router.get('/generate-hash/:password', async (req, res) => {
+  const hash = await bcrypt.hash(req.params.password, 10);
+  res.json({ hash });
+});
+
 module.exports = router;
